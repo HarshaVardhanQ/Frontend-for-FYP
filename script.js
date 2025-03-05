@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const limits = {
     age: [18, 90],
     bilirubin: [0.1, 15.0],
-    alk_phos: [40, 550],
-    alt: [7, 190],
-    ast: [8, 250],
+    alk_phos: [40, 1200],  // Updated max limit
+    alt: [7, 500],         // Updated max limit
+    ast: [8, 500],         // Updated max limit
     albumin: [1.5, 5.0],
     proteins: [2.0, 7.9],
     prothrombin: [9.4, 35.0],
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
   
-    // Show loading
+    // Show loading indicator
     document.getElementById("loadingIndicator").parentNode.classList.remove("hidden");
   
     // Gather form data
