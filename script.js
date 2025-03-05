@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     platelets: [55, 450]
   };
   
-  // Removed resizer logic (adjusting formPanel width) entirely
+  // Resizer logic removed
   
   // Validation functions
   function validateInput(input) {
