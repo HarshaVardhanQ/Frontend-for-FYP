@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Liver Disease Prediction</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <h2>Liver Disease Prediction</h2>
+    
+    <!-- Reference Box for healthy ranges -->
+    <label for="modalToggle" class="reference-box">
+      Healthy Reference Ranges (Click to view)
+    </label>
+    
+    <!-- Split Container using CSS Grid -->
+    <div id="splitContainer" class="split-container">
+      <!-- Left Panel: Form -->
+      <div id="formPanel" class="panel form-panel">
+        <form id="predictionForm" novalidate>
+          <div class="input-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="90" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <!-- Add additional input fields with tooltips as needed -->
+          <div class="input-group">
+            <label for="bilirubin" class="tooltip">
+              Total Bilirubin
+              <span class="tooltiptext">
+                A yellow pigment produced from the breakdown of red blood cells.
+              </span>
+            </label>
+            <input type="number" id="bilirubin" name="bilirubin" step="any" min="0.1" max="15.0" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="alk_phos" class="tooltip">
+              Alkaline Phosphatase
+              <span class="tooltiptext">
+                An enzyme found in the liver and bones; high levels may indicate damage.
+              </span>
+            </label>
+            <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="550" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="alt" class="tooltip">
+              Alanine Aminotransferase (ALT)
+              <span class="tooltiptext">
+                A liver enzyme; elevated levels signal possible liver injury.
+              </span>
+            </label>
+            <input type="number" id="alt" name="alt" step="1" min="7" max="190" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="ast" class="tooltip">
+              Aspartate Aminotransferase (AST)
+              <span class="tooltiptext">
+                An enzyme found in liver and other tissues.
+              </span>
+            </label>
+            <input type="number" id="ast" name="ast" step="1" min="8" max="250" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="albumin" class="tooltip">
+              Albumin
+              <span class="tooltiptext">
+                A protein produced by the liver; essential for maintaining blood volume.
+              </span>
+            </label>
+            <input type="number" id="albumin" name="albumin" step="any" min="1.5" max="5.0" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="proteins" class="tooltip">
+              Total Proteins
+              <span class="tooltiptext">
+                Sum of albumin and globulins; reflects overall nutritional status.
+              </span>
+            </label>
+            <input type="number" id="proteins" name="proteins" step="any" min="2.0" max="7.9" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="prothrombin" class="tooltip">
+              Prothrombin Time
+              <span class="tooltiptext">
+                Time required for blood clotting; can indicate liver function.
+              </span>
+            </label>
+            <input type="number" id="prothrombin" name="prothrombin" step="any" min="9.4" max="35.0" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="platelets" class="tooltip">
+              Platelets
+              <span class="tooltiptext">
+                Blood cells involved in clotting; low counts may indicate liver issues.
+              </span>
+            </label>
+            <input type="number" id="platelets" name="platelets" step="1" min="55" max="450" required autocomplete="off"/>
+          </div>
+          <div class="input-group">
+            <label for="Ascites" class="tooltip">
+              Ascites
+              <span class="tooltiptext">
+                Fluid accumulation in the abdomen.
+              </span>
+            </label>
+            <select id="Ascites" name="Ascites" required>
+              <option value="Absent">Absent</option>
+              <option value="Present">Present</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="LiverFirmness" class="tooltip">
+              Liver Firmness
+              <span class="tooltiptext">
+                A measure of liver stiffness; increased firmness may suggest fibrosis.
+              </span>
+            </label>
+            <select id="LiverFirmness" name="LiverFirmness" required>
+              <option value="Absent">Absent</option>
+              <option value="Present">Present</option>
+            </select>
+          </div>
+          <div class="button-group">
+            <button type="submit">Predict</button>
+            <button type="reset" id="resetButton">Reset</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Removed Resizer Bar -->
+      
+      <!-- Right Panel: Results -->
+      <div id="resultPanel" class="panel result-panel hidden">
+        <h3>Prediction Result</h3>
+        <p id="predictionText"></p>
+        <p id="stageExplanationText"></p>
+        <div id="featureExplanationsText"></div>
+        <p id="calculatedValuesText"></p>
+        <p id="additionalInfoText"></p>
+        <button id="closeButton">Close</button>
+      </div>
+    </div>
+    
+    <!-- Loading Indicator -->
+    <div class="loading-container hidden">
+      <div id="loadingIndicator">Processing...</div>
+    </div>
+  </div>
+  
+  <!-- Hidden Checkbox for Modal Toggle (Reference Table Popup) -->
+  <input type="checkbox" id="modalToggle" class="modal-toggle"/>
+  
+  <!-- Modal for Healthy Reference Ranges -->
+  <div class="modal">
+    <div class="modal-content">
+      <label for="modalToggle" class="close-button">&times;</label>
+      <h2>Healthy Reference Ranges</h2>
+      <table class="reference-table">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Reference Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Gender</td><td>Male/Female</td></tr>
+          <tr><td>Total Bilirubin</td><td>0.1–1.2 mg/dL</td></tr>
+          <tr><td>Alkaline Phosphatase</td><td>M: 40–129 U/L<br>F: 35–104 U/L</td></tr>
+          <tr><td>Alanine Aminotransferase</td><td>M: 7–55 U/L<br>F: 7–45 U/L</td></tr>
+          <tr><td>Aspartate Aminotransferase</td><td>M: 8–48 U/L<br>F: 8–43 U/L</td></tr>
+          <tr><td>AST/ALT Ratio</td><td>~0.6–1.0</td></tr>
+          <tr><td>Albumin</td><td>3.5–5.0 g/dL</td></tr>
+          <tr><td>Total Proteins</td><td>6.3–7.9 g/dL</td></tr>
+          <tr><td>Prothrombin Time</td><td>9.4–12.5 seconds</td></tr>
+          <tr><td>Platelets</td><td>150–450 ×10³/µL</td></tr>
+          <tr><td>Albumin Globulin Ratio</td><td>1.2–2.2</td></tr>
+          <tr><td>FIB-4 Score</td><td>&lt;1.30</td></tr>
+          <tr><td>Ascites</td><td>Absent</td></tr>
+          <tr><td>Liver Firmness</td><td>Absent</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
