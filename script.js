@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("✅ Sending Data:", jsonData);
   
       // Fetch prediction from backend
-      fetch("https://backend-only-for-fyp-production.up.railway.app/predict", {
+      fetch("https://backend-only-for-fyp-production.up.railway.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
