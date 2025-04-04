@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("✅ Sending Data:", jsonData);
   
       // Fetch prediction from backend
-      fetch("http://127.0.0.1:5001/predict", {
+      fetch("https://web-production-c0b1b.up.railway.app/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
