@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Ensures proper scaling on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Liver Disease Prediction</title>
   <link rel="stylesheet" href="styles.css"/>
@@ -10,12 +11,12 @@
   <div class="container">
     <h2>Liver Disease Prediction</h2>
     
-    <!-- Reference Box for healthy ranges -->
+    <!-- Reference Box for Healthy Reference Ranges -->
     <label for="modalToggle" class="reference-box">
       Healthy Reference Ranges (Click to view)
     </label>
     
-    <!-- Split Container using CSS Grid -->
+    <!-- Split Container -->
     <div id="splitContainer" class="split-container">
       <!-- Left Panel: Form -->
       <div id="formPanel" class="panel form-panel">
@@ -31,7 +32,7 @@
               <option value="Female">Female</option>
             </select>
           </div>
-          <!-- Add additional input fields with tooltips as needed -->
+          <!-- Additional input fields with tooltips -->
           <div class="input-group">
             <label for="bilirubin" class="tooltip">
               Total Bilirubin
@@ -48,7 +49,8 @@
                 An enzyme found in the liver and bones; high levels may indicate damage.
               </span>
             </label>
-            <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="550" required autocomplete="off"/>
+            <!-- Updated max value -->
+            <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="1200" required autocomplete="off"/>
           </div>
           <div class="input-group">
             <label for="alt" class="tooltip">
@@ -57,7 +59,8 @@
                 A liver enzyme; elevated levels signal possible liver injury.
               </span>
             </label>
-            <input type="number" id="alt" name="alt" step="1" min="7" max="190" required autocomplete="off"/>
+            <!-- Updated max value -->
+            <input type="number" id="alt" name="alt" step="1" min="7" max="500" required autocomplete="off"/>
           </div>
           <div class="input-group">
             <label for="ast" class="tooltip">
@@ -66,7 +69,8 @@
                 An enzyme found in liver and other tissues.
               </span>
             </label>
-            <input type="number" id="ast" name="ast" step="1" min="8" max="250" required autocomplete="off"/>
+            <!-- Updated max value -->
+            <input type="number" id="ast" name="ast" step="1" min="8" max="500" required autocomplete="off"/>
           </div>
           <div class="input-group">
             <label for="albumin" class="tooltip">
@@ -134,9 +138,6 @@
           </div>
         </form>
       </div>
-      
-      <!-- Resizer Bar -->
-      <div id="resizer" class="resizer"></div>
       
       <!-- Right Panel: Results -->
       <div id="resultPanel" class="panel result-panel hidden">
