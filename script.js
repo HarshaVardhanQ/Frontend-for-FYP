@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultPanel = document.getElementById("resultPanel");
     const resizer = document.getElementById("resizer");
   
-    // Elements for prediction results inside resultPanel
+    // Elements for prediction results
     const predictionText = document.getElementById("predictionText");
     const stageExplanationText = document.getElementById("stageExplanationText");
     const featureExplanationsText = document.getElementById("featureExplanationsText");
@@ -13,9 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("closeButton");
     const predictionForm = document.getElementById("predictionForm");
   
-    // Numeric limits (for optional validation)
-    // Updated limits are set to match the old code: 
-    // alk_phos: [40, 1200], alt: [7, 500], ast: [8, 500]
+    // Numeric limits (using higher max values)
     const limits = {
       age: [18, 90],
       bilirubin: [0.1, 15.0],
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isResizing) return;
       const dx = e.clientX - startX;
       let newWidth = startWidth + dx;
-      // Clamp the width of formPanel
+      // Clamp width between 250px and 700px
       if (newWidth < 250) newWidth = 250;
       if (newWidth > 700) newWidth = 700;
       formPanel.style.width = newWidth + "px";
@@ -58,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.removeEventListener("mouseup", onMouseUp);
     }
   
-    // Optional: Validation functions
+    // Validation functions
     function validateInput(input) {
       const fieldName = input.name;
       const rawValue = input.value.trim();
@@ -122,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
   
-      // Show loading
+      // Show loading indicator
       document.getElementById("loadingIndicator").parentNode.classList.remove("hidden");
   
       // Gather form data
@@ -156,8 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       console.log("✅ Sending Data:", jsonData);
   
-      // Fetch prediction from backend
-      fetch("backend-only-for-fyp-production.up.railway.app", {
+      // Fetch prediction from backend hosted on Railway
+      fetch("https://backend-only-for-fyp-production.up.railway.app/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
