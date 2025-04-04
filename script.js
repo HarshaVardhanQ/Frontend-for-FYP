@@ -14,12 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const predictionForm = document.getElementById("predictionForm");
   
     // Numeric limits (for optional validation)
+    // Updated limits are set to match the old code: 
+    // alk_phos: [40, 1200], alt: [7, 500], ast: [8, 500]
     const limits = {
       age: [18, 90],
       bilirubin: [0.1, 15.0],
-      alk_phos: [40, 550],
-      alt: [7, 190],
-      ast: [8, 250],
+      alk_phos: [40, 1200],
+      alt: [7, 500],
+      ast: [8, 500],
       albumin: [1.5, 5.0],
       proteins: [2.0, 7.9],
       prothrombin: [9.4, 35.0],
@@ -155,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("✅ Sending Data:", jsonData);
   
       // Fetch prediction from backend
-      fetch("https://backend-only-for-fyp-production.up.railway.app/", {
+      fetch("backend-only-for-fyp-production.up.railway.app", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
@@ -230,5 +232,4 @@ document.addEventListener("DOMContentLoaded", function () {
       resultPanel.classList.remove("show");
       resultPanel.classList.add("hidden");
     });
-  });
-  
+});
