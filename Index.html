@@ -16,7 +16,7 @@
       Healthy Reference Ranges (Click to view)
     </label>
     
-    <!-- Split Container -->
+    <!-- Split Container using CSS Grid (40%-6px-60%) -->
     <div id="splitContainer" class="split-container">
       <!-- Left Panel: Form -->
       <div id="formPanel" class="panel form-panel">
@@ -49,7 +49,7 @@
                 An enzyme found in the liver and bones; high levels may indicate damage.
               </span>
             </label>
-            <!-- Using higher maximum limit -->
+            <!-- Using old max value -->
             <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="1200" required autocomplete="off"/>
           </div>
           <div class="input-group">
@@ -59,7 +59,7 @@
                 A liver enzyme; elevated levels signal possible liver injury.
               </span>
             </label>
-            <!-- Using higher maximum limit -->
+            <!-- Using old max value -->
             <input type="number" id="alt" name="alt" step="1" min="7" max="500" required autocomplete="off"/>
           </div>
           <div class="input-group">
@@ -69,7 +69,7 @@
                 An enzyme found in liver and other tissues.
               </span>
             </label>
-            <!-- Using higher maximum limit -->
+            <!-- Using old max value -->
             <input type="number" id="ast" name="ast" step="1" min="8" max="500" required autocomplete="off"/>
           </div>
           <div class="input-group">
@@ -194,7 +194,7 @@
       </table>
     </div>
   </div>
-  
+
   <script src="script.js"></script>
 </body>
 </html>
