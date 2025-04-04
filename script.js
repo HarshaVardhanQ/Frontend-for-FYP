@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.getElementById("closeButton");
     const predictionForm = document.getElementById("predictionForm");
   
-    // Numeric limits (using higher max values)
+    // Numeric limits (using old max values)
     const limits = {
       age: [18, 90],
       bilirubin: [0.1, 15.0],
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isResizing) return;
       const dx = e.clientX - startX;
       let newWidth = startWidth + dx;
-      // Clamp width between 250px and 700px
+      // Clamp the width of formPanel between 250px and 700px
       if (newWidth < 250) newWidth = 250;
       if (newWidth > 700) newWidth = 700;
       formPanel.style.width = newWidth + "px";
@@ -154,8 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       console.log("✅ Sending Data:", jsonData);
   
-      // Fetch prediction from backend hosted on Railway
-      fetch("backend-only-for-fyp-production.up.railway.app", {
+      // Fetch prediction from Railway backend
+      fetch("https://backend-only-for-fyp-production.up.railway.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(jsonData)
