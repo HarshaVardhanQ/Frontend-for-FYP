@@ -24,6 +24,7 @@
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" min="1" max="90" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="Gender">Gender:</label>
             <select id="Gender" name="Gender" required>
@@ -31,113 +32,100 @@
               <option value="Female">Female</option>
             </select>
           </div>
-          <!-- Add additional input fields with tooltips as needed -->
+
           <div class="input-group">
             <label for="bilirubin" class="tooltip">
               Total Bilirubin
-              <span class="tooltiptext">
-                A yellow pigment produced from the breakdown of red blood cells.
-              </span>
+              <span class="tooltiptext">A yellow pigment produced from the breakdown of red blood cells.</span>
             </label>
             <input type="number" id="bilirubin" name="bilirubin" step="any" min="0.1" max="15.0" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="alk_phos" class="tooltip">
               Alkaline Phosphatase
-              <span class="tooltiptext">
-                An enzyme found in the liver and bones; high levels may indicate damage.
-              </span>
+              <span class="tooltiptext">An enzyme found in the liver and bones; high levels may indicate damage.</span>
             </label>
-            <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="550" required autocomplete="off"/>
+            <input type="number" id="alk_phos" name="alk_phos" step="1" min="40" max="1200" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="alt" class="tooltip">
               Alanine Aminotransferase (ALT)
-              <span class="tooltiptext">
-                A liver enzyme; elevated levels signal possible liver injury.
-              </span>
+              <span class="tooltiptext">A liver enzyme; elevated levels signal possible liver injury.</span>
             </label>
-            <input type="number" id="alt" name="alt" step="1" min="7" max="190" required autocomplete="off"/>
+            <input type="number" id="alt" name="alt" step="1" min="7" max="500" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="ast" class="tooltip">
               Aspartate Aminotransferase (AST)
-              <span class="tooltiptext">
-                An enzyme found in liver and other tissues.
-              </span>
+              <span class="tooltiptext">An enzyme found in liver and other tissues.</span>
             </label>
-            <input type="number" id="ast" name="ast" step="1" min="8" max="250" required autocomplete="off"/>
+            <input type="number" id="ast" name="ast" step="1" min="8" max="500" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="albumin" class="tooltip">
               Albumin
-              <span class="tooltiptext">
-                A protein produced by the liver; essential for maintaining blood volume.
-              </span>
+              <span class="tooltiptext">A protein produced by the liver; essential for maintaining blood volume.</span>
             </label>
             <input type="number" id="albumin" name="albumin" step="any" min="1.5" max="5.0" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="proteins" class="tooltip">
               Total Proteins
-              <span class="tooltiptext">
-                Sum of albumin and globulins; reflects overall nutritional status.
-              </span>
+              <span class="tooltiptext">Sum of albumin and globulins; reflects overall nutritional status.</span>
             </label>
             <input type="number" id="proteins" name="proteins" step="any" min="2.0" max="7.9" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="prothrombin" class="tooltip">
               Prothrombin Time
-              <span class="tooltiptext">
-                Time required for blood clotting; can indicate liver function.
-              </span>
+              <span class="tooltiptext">Time required for blood clotting; can indicate liver function.</span>
             </label>
             <input type="number" id="prothrombin" name="prothrombin" step="any" min="9.4" max="35.0" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="platelets" class="tooltip">
               Platelets
-              <span class="tooltiptext">
-                Blood cells involved in clotting; low counts may indicate liver issues.
-              </span>
+              <span class="tooltiptext">Blood cells involved in clotting; low counts may indicate liver issues.</span>
             </label>
             <input type="number" id="platelets" name="platelets" step="1" min="55" max="450" required autocomplete="off"/>
           </div>
+
           <div class="input-group">
             <label for="Ascites" class="tooltip">
               Ascites
-              <span class="tooltiptext">
-                Fluid accumulation in the abdomen.
-              </span>
+              <span class="tooltiptext">Fluid accumulation in the abdomen.</span>
             </label>
             <select id="Ascites" name="Ascites" required>
               <option value="Absent">Absent</option>
               <option value="Present">Present</option>
             </select>
           </div>
+
           <div class="input-group">
             <label for="LiverFirmness" class="tooltip">
               Liver Firmness
-              <span class="tooltiptext">
-                A measure of liver stiffness; increased firmness may suggest fibrosis.
-              </span>
+              <span class="tooltiptext">A measure of liver stiffness; increased firmness may suggest fibrosis.</span>
             </label>
             <select id="LiverFirmness" name="LiverFirmness" required>
               <option value="Absent">Absent</option>
               <option value="Present">Present</option>
             </select>
           </div>
+
           <div class="button-group">
             <button type="submit">Predict</button>
             <button type="reset" id="resetButton">Reset</button>
           </div>
         </form>
       </div>
-      
-      <!-- Resizer Bar -->
-      <div id="resizer" class="resizer"></div>
-      
+
       <!-- Right Panel: Results -->
       <div id="resultPanel" class="panel result-panel hidden">
         <h3>Prediction Result</h3>
@@ -149,16 +137,16 @@
         <button id="closeButton">Close</button>
       </div>
     </div>
-    
+
     <!-- Loading Indicator -->
     <div class="loading-container hidden">
       <div id="loadingIndicator">Processing...</div>
     </div>
   </div>
-  
-  <!-- Hidden Checkbox for Modal Toggle (Reference Table Popup) -->
+
+  <!-- Hidden Checkbox for Modal Toggle -->
   <input type="checkbox" id="modalToggle" class="modal-toggle"/>
-  
+
   <!-- Modal for Healthy Reference Ranges -->
   <div class="modal">
     <div class="modal-content">
@@ -166,10 +154,7 @@
       <h2>Healthy Reference Ranges</h2>
       <table class="reference-table">
         <thead>
-          <tr>
-            <th>Parameter</th>
-            <th>Reference Range</th>
-          </tr>
+          <tr><th>Parameter</th><th>Reference Range</th></tr>
         </thead>
         <tbody>
           <tr><td>Gender</td><td>Male/Female</td></tr>
