@@ -1,180 +1,207 @@
-/* ===== Base Styles ===== */
+/* Reset and base styles */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, rgba(255,85,85,0.85), rgba(250,170,140,0.85));
-  margin: 0;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  backdrop-filter: blur(6px);
+  background-color: #f4f8fb;
+  padding: 20px;
 }
 
-/* ===== Container ===== */
 .container {
-  background: rgba(255,255,255,0.25);
-  padding: 20px 30px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
-  width: 90%;
-  max-width: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Title ===== */
-h2 {
-  color: #fff;
+/* Headings */
+h2, h3 {
   text-align: center;
-  font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: #2c3e50;
   margin-bottom: 20px;
 }
 
-/* ===== Reference Box ===== */
-.reference-box {
-  background: rgba(255,255,255,0.9);
-  padding: 10px 15px;
-  border-radius: 6px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #333;
-  transition: background 0.3s;
-}
-.reference-box:hover {
-  background: rgba(255,255,255,1);
-}
-
-/* ===== Split Container with CSS Grid (Resizable Area as Flex Element) ===== */
+/* Split container */
 .split-container {
   display: grid;
-  grid-template-columns: 40% 6px 60%;
-  gap: 0;
-  width: 100%;
-  height: 70vh;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
-/* ===== Resizer (Visual only, not draggable via CSS) ===== */
-.resizer {
-  background: #ccc;
-  cursor: col-resize;
-  width: 6px;
-}
-
-/* ===== Panel Base ===== */
 .panel {
-  border-radius: 8px;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
-  overflow-y: auto;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/* ===== Form Panel ===== */
 .form-panel {
-  background: rgba(255,255,255,0.9);
-  padding: 20px;
+  background-color: #fefefe;
+  border: 1px solid #dce1e7;
 }
 
-/* ===== Result Panel ===== */
 .result-panel {
-  background: rgba(255,255,255,0.98);
-  padding: 20px;
-  font-size: 1rem;
-  line-height: 1.5;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-.result-panel.show {
-  opacity: 1;
+  background-color: #ecf9f1;
+  border: 1px solid #b2d8c2;
 }
 
-/* ===== Input Groups ===== */
+.hidden {
+  display: none;
+}
+
+/* Form input styles */
 .input-group {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 15px;
 }
-label {
-  font-size: 1rem;
-  font-weight: bold;
+
+.input-group label {
+  display: block;
   margin-bottom: 5px;
-  color: #333;
-}
-input, select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #fff;
-  font-size: 1rem;
-  transition: border 0.3s, background 0.3s;
-  outline: none;
-}
-input:focus, select:focus {
-  border-color: #ff6b81;
-  background: #fef3f3;
-  outline: 2px solid rgba(255, 107, 129, 0.6);
-  caret-color: #ff6b81;
+  font-weight: 600;
 }
 
-/* ===== Button Group ===== */
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Buttons */
 .button-group {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
+
 button {
-  background: linear-gradient(135deg, #ff6b81, #ff8a9e);
-  color: #fff;
-  border: none;
   padding: 10px 16px;
+  border: none;
   border-radius: 6px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 15px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.2s ease, background 0.3s;
-  box-shadow: 0px 3px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
 }
+
 button:hover {
-  background: linear-gradient(135deg, #ff4d69, #ff758c);
-  transform: scale(1.03);
+  background-color: #2980b9;
 }
 
-/* ===== Hidden Class ===== */
-.hidden {
-  display: none !important;
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+  cursor: help;
 }
 
-/* ===== Mobile Responsive ===== */
-@media (max-width: 768px) {
-  .split-container {
-    display: flex;
-    flex-direction: column;
-  }
+.tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+}
 
-  h2 {
-    font-size: 1.8rem;
-  }
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
-  input, select, button {
-    font-size: 1rem;
-    width: 100%;
-  }
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
 
-  .button-group {
-    flex-direction: column;
-    gap: 10px;
-  }
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-  .resizer {
-    display: none;
-  }
+.modal-toggle:checked + .modal {
+  display: flex;
+}
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  color: #e74c3c;
+  cursor: pointer;
+}
+
+/* Reference Box Label */
+.reference-box {
+  display: block;
+  margin-bottom: 20px;
+  color: #2980b9;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Table Styles */
+.reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.reference-table th,
+.reference-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.reference-table th {
+  background-color: #2980b9;
+  color: white;
+}
+
+/* Loading */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#loadingIndicator {
+  font-size: 20px;
+  color: #2c3e50;
 }
